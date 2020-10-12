@@ -8,13 +8,13 @@ const Header = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to={`/${AccountRoute}`}>Account - TODO</Link>
+                        <Link to={`${AccountRoute}`}>Account</Link>
                     </li>
                     <li>
-                        <Link to={`/${LoginRoute}`}>Log-in</Link>
+                        <Link to={`${LoginRoute}`}>Log-in</Link>
                     </li>
                     <li>
-                        <Link to={`/${ItemsRoute}`}>Items - TODO</Link>
+                        <Link to={`${ItemsRoute}`}>Items - TODO</Link>
                     </li>
                 </ul>
             </nav>
