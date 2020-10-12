@@ -1,13 +1,14 @@
 import './Root.scss';
 import React, { Suspense } from 'react';
 import { Login, LoginRoute } from '../routes';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import Header from '../components/header/header';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function Root() {
   return (
     <div>
       <BrowserRouter>
-      <Link to={`${LoginRoute}`}>Login</Link>
+        <Header />
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path={`${LoginRoute}`} exact component={Login} />
