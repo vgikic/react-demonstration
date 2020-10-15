@@ -6,15 +6,31 @@
     align-items: stretch;
     background-color: #333;
 
+    @media (max-width: 500px) {
+        justify-content: center;
+        margin-top: 0px;
+    }
+
     nav {
         height: 100px;
+        transition: height 150ms ease-in;
+
+        @media (max-width: 500px) {
+            &.navigation-extend{
+               height: 300px;
+            }
+        }
+
         ul {
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
+            @media (max-width: 500px) {
+                flex-direction: column-reverse;
+                margin: -10px;
+                padding: 0px;
+            }
 
             li.route {
-                display: flex;
+                flex-wrap: wrap;
                 justify-content: center;
                 opacity: 0;
                 transition: opacity 150ms ease-in;
@@ -31,12 +47,27 @@
                 width: 100px;
                 height: 50px;
                 border-radius: 5px;
-                justify-content: flex-end;
                 cursor: pointer;
+                flex-wrap: nowrap;
                 align-items: center;
+                justify-content: flex-end;
                 a {
                     text-decoration: none;
                     color: white;
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                @media (max-width: 500px) {
+                    i {
+                        position: absolute;
+                        margin: 0px;
+                         right: 10px;
+                        top: 10px;
+                    }
+                    flex-direction: column-reverse;
                 }
             }
         }
@@ -49,8 +80,4 @@
 
 .md-48 {
     font-size: 36px;
-}
-
-.active {
-    display: flex;
 }
