@@ -26,7 +26,6 @@ const loading = () => {
 
 export const loginAsync = (email: string, password: string) => {
     return (dispatch: (action: (IAccountAction | { type: string })) => void, getState: () => IAccountState) => {
-        debugger;
         const data = { email: email, password: password, returnSecureToken: true };
         dispatch(loading());
         axios.post('', data)

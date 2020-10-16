@@ -16,13 +16,14 @@
         transition: height 150ms ease-in;
 
         @media (max-width: 500px) {
-            &.navigation-extend{
-               height: 300px;
+            &.navigation-extend {
+                height: 300px;
             }
         }
 
         ul {
             display: flex;
+
             @media (max-width: 500px) {
                 flex-direction: column-reverse;
                 margin: -10px;
@@ -34,9 +35,10 @@
                 justify-content: center;
                 opacity: 0;
                 transition: opacity 150ms ease-in;
-                &.active {
+                &.visible {
                     opacity: 100;
-                    &:hover {
+                    &:hover,
+                    &.active {
                         background-color: #ebb434;
                     }
                 }
@@ -45,12 +47,13 @@
                 display: flex;
                 margin: 10px;
                 width: 100px;
-                height: 50px;
+                height: 60px;
                 border-radius: 5px;
                 cursor: pointer;
                 flex-wrap: nowrap;
                 align-items: center;
                 justify-content: flex-end;
+
                 a {
                     text-decoration: none;
                     color: white;
@@ -59,16 +62,25 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+
+                    &.active {
+                        font-weight: bold;
+                        background-color: #ebb434;
+                        border-radius: 5px;
+                        color: black;
+                    }
                 }
+
                 @media (max-width: 500px) {
                     i {
                         position: absolute;
                         margin: 0px;
-                         right: 10px;
+                        right: 10px;
                         top: 10px;
                     }
                     flex-direction: column-reverse;
                 }
+
             }
         }
     }

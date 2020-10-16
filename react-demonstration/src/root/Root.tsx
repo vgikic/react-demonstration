@@ -1,6 +1,6 @@
 import './Root.scss';
 import React, { Suspense } from 'react';
-import Header from '../components/header/Header';
+import Header from '../components/header/header';
 import Account from '../components/account/Account';
 import { AccountRoute, Login, LoginRoute } from '../routes';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';

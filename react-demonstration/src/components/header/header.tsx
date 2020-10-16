@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import style from './Header.module.scss';
+import { NavLink, withRouter } from 'react-router-dom';
+import style from './header.module.scss';
 
 import { AccountRoute, ItemsRoute, LoginRoute } from '../../routes';
+import { connect } from 'react-redux';
 
 const Header = () => {
-    debugger;
+
     const materialIconStyle = `material-icons ${style['md-light']} ${style['md-48']}`;
 
-    const [navigationState, changeNavigationState] = useState({ routeStyle: `${style.route}`, navStyle: `` });
+    const [navigationState, changeNavigationState] = useState({ routeStyle: `${style.route} ${style.visible}`, navStyle: `` });
 
     const onMenuClick = () => {
-        const isActive = navigationState.routeStyle.indexOf('active') != -1;
+        const isActive = navigationState.routeStyle.indexOf('visible') != -1;
 
-        const nextRouteStyle = isActive ? `${style.route}` : `${style.route} ${style.active}`;
+        const nextRouteStyle = isActive ? `${style.route}` : `${style.route} ${style.visible}`;
         const nextNavStyle = isActive ? '' : `${style['navigation-extend']}`;
         changeNavigationState({ navStyle: nextNavStyle, routeStyle: nextRouteStyle });
 
@@ -25,15 +26,15 @@ const Header = () => {
                 <ul>
 
                     <li className={navigationState.routeStyle}>
-                        <Link to={`${ItemsRoute}`}>ITEMS</Link>
+                        <NavLink to={`${ItemsRoute}`} activeClassName={style.active} exact>ITEMS</NavLink>
                     </li>
 
                     <li className={navigationState.routeStyle}>
-                        <Link to={`${LoginRoute}`}>LOGIN</Link>
+                        <NavLink to={`${LoginRoute}`} activeClassName={style.active} exact>LOGIN</NavLink>
                     </li>
 
                     <li className={navigationState.routeStyle}>
-                        <Link to={`${AccountRoute}`}>ACCOUNT</Link>
+                        <NavLink to={`${AccountRoute}`} activeClassName={style.active} exact>ACCOUNT</NavLink>
                     </li>
 
                     <li className="icon-container">
@@ -46,4 +47,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default connect()(Header);
