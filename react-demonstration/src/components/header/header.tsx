@@ -6,7 +6,6 @@ import { AccountRoute, ItemsRoute, LoginRoute } from '../../routes';
 import { connect } from 'react-redux';
 
 const Header = () => {
-
     const materialIconStyle = `material-icons ${style['md-light']} ${style['md-48']}`;
 
     const [navigationState, changeNavigationState] = useState({ routeStyle: `${style.route} ${style.visible}`, navStyle: `` });
