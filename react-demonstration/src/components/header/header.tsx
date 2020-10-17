@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import style from './header.module.scss';
+import style from './Header.module.scss';
 
 import { AccountRoute, ItemsRoute, LoginRoute } from '../../routes';
 import { connect } from 'react-redux';

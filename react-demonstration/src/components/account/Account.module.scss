@@ -1,14 +1,52 @@
 .container {
     display: flex;
-    border: 1px solid blue;
-    height: 500px;
-    color:red;
-    width: 500px;
+    margin: 10px;
+    align-self: center;
+    flex-direction: column;
+    width: 50%;
+    background-color: #000000;
+    color: white;
+    border-radius: 5px;
+
+    div {
+        margin: 10px 0px 10px 10px;
+        display: flex;
+        flex-flow: column wrap;
+
+        .token,
+        span {
+            padding: 10px;
+            // border: 1px solid saddlebrown;
+            word-break: break-all;
+            flex: 3 3 80%;
+            color: rgb(30, 241, 76);
+            text-align: justify;
+            font-family: "Source Code Pro", monospace;
+        }
+        label {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+
+    div:first-of-type {
+        &:hover {
+            :nth-child(2) {
+                filter: blur(4px);
+                cursor: copy;
+            }
+            :nth-child(3) {
+                cursor: copy;
+                visibility: visible;
+                align-self: center;
+            }
+        }
+
+        & :nth-child(3) {
+            visibility: hidden;
+            color: #1368f0;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+    }
 }
-// div{
-//     display: flex;
-//     border: 1px solid blue;
-//     height: 500px;
-//     color:red;
-//     width: 500px;
-// }

@@ -1,6 +1,6 @@
 import './Root.scss';
 import React, { Suspense } from 'react';
-import Header from '../components/header/header';
+import Header from '../components/header/Header';
 import Account from '../components/account/Account';
 import { AccountRoute, Login, LoginRoute } from '../routes';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
@@ -17,7 +17,7 @@ const mapStateToProps = ({ account }: IState) => {
 
 function Root(props: IAccountPayload) {
   return (
-    <div>
+    <div className="main-container">
       <BrowserRouter>
         <Header />
         <Spinner></Spinner>
