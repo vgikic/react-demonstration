@@ -1,3 +1,6 @@
+@import '../../styles/colors.scss';
+
+
 .container {
     display: flex;
     flex-direction: row;
@@ -39,7 +42,7 @@
                     opacity: 100;
                     &:hover,
                     &.active {
-                        background-color: #ebb434;
+                        background-color: $base-color;
                     }
                 }
             }
@@ -65,7 +68,7 @@
 
                     &.active {
                         font-weight: bold;
-                        background-color: #ebb434;
+                        background-color: $base-color;
                         border-radius: 5px;
                         color: black;
                     }

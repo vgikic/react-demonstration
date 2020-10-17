@@ -1,0 +1,43 @@
+@import "../../styles/colors.scss";
+
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    margin: 10px;
+    width: 50%;
+    align-self: center;
+
+    form {
+        display: flex;
+        flex-flow: column wrap;
+
+        div {
+            display: flex; /* added */
+            align-items: center; /* added */
+            // align-content: center;
+            margin: 10px 0px 10px 5px;
+
+            label {
+                width: 100px;
+                text-transform: capitalize;
+                font-weight: bold;
+            }
+
+            input {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    button {
+        padding: 10px;
+        align-self: stretch;
+
+        &:hover {
+            background-color: $base-color;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 2px 4px 14px 0px rgba(0,0,0,0.75);
+        }
+    }
+}

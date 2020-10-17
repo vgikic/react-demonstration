@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import IState from '../../common/interface/IState';
 import { loginAsync } from '../account/actions/AccountActionCreator';
 import IAccountState from '../account/state/IAccountState';
-
+import style from './Login.module.scss';
 
 const mapStateToProps = ({ account }: IState) => {
     return {
@@ -23,8 +23,9 @@ const Login = (props: IAccountState) => {
     const [passwordState, changePasswordState] = useState('Password123!');
 
     return (
-        <div>
+        <div className={style.container}>
             <form >
+
                 <div>
                     <label htmlFor="email">Email: </label>
                     <input
@@ -35,7 +36,6 @@ const Login = (props: IAccountState) => {
                     </input>
                 </div>
 
-                <label>{emailState}</label>
                 <div>
                     <label htmlFor="email">Password: </label>
                     <input onChange={event => changePasswordState(event.target.value)}
@@ -46,6 +46,7 @@ const Login = (props: IAccountState) => {
                 </div>
 
             </form>
+            
             <button onClick={() => props.logIn(emailState, passwordState)}>SUBMIT</button>
 
         </div>
