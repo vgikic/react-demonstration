@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from './Header.module.scss';
 
 import { AccountRoute, ItemsRoute, LoginRoute } from '../../routes';
 import { connect } from 'react-redux';
+import IAccountState from '../account/state/IAccountState';
+import IState from '../../common/interface/IState';
+import { logout } from '../account/actions/AccountActionCreator';
 
-const Header = () => {
+
+const mapStateToProps = ({ account }: IState) => {
+    return {
+        ...account
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        logOut: () => dispatch(logout())
+    }
+}
+
+const Header = (props: IAccountState) => {
+
     const materialIconStyle = `material-icons ${style['md-light']} ${style['md-48']}`;
 
     const [navigationState, changeNavigationState] = useState({ routeStyle: `${style.route} ${style.visible}`, navStyle: `` });
@@ -24,19 +41,35 @@ const Header = () => {
             <nav className={navigationState.navStyle}>
                 <ul>
 
-                    <li className={navigationState.routeStyle}>
-                        <NavLink to={`${ItemsRoute}`} activeClassName={style.active} exact>ITEMS</NavLink>
-                    </li>
+                    {
+                        props.payload.isAuthenticated ?
+                            (<li className={navigationState.routeStyle}>
+                                <NavLink to={`${ItemsRoute}`} activeClassName={style.active} exact>ITEMS</NavLink>
+                            </li>) : null
+                    }
 
-                    <li className={navigationState.routeStyle}>
-                        <NavLink to={`${LoginRoute}`} activeClassName={style.active} exact>LOGIN</NavLink>
-                    </li>
+                    {
+                        !props.payload.isAuthenticated ?
+                            (<li className={navigationState.routeStyle}>
+                                <NavLink to={`${LoginRoute}`} activeClassName={style.active} exact>LOGIN</NavLink>
+                            </li>) : null
+                    }
 
-                    <li className={navigationState.routeStyle}>
-                        <NavLink to={`${AccountRoute}`} activeClassName={style.active} exact>ACCOUNT</NavLink>
-                    </li>
+                    {
+                        props.payload.isAuthenticated ?
+                            <li className={navigationState.routeStyle}>
+                                <NavLink to={`${AccountRoute}`} activeClassName={style.active} exact>ACCOUNT</NavLink>
+                            </li> : null
+                    }
 
-                    <li className="icon-container">
+                    {
+                        props.payload.isAuthenticated ?
+                            <li className={style['logout--icon']}>
+                                <i className={materialIconStyle} onClick={props.logOut}>power_settings_new</i>
+                            </li> : null
+                    }
+
+                    <li>
                         <i onClick={onMenuClick} className={materialIconStyle}>view_headline</i>
                     </li>
 
@@ -46,4 +79,4 @@ const Header = () => {
     )
 }
 
-export default connect()(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

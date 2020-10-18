@@ -12,19 +12,41 @@
         flex-flow: column wrap;
 
         div {
-            display: flex; /* added */
-            align-items: center; /* added */
-            // align-content: center;
-            margin: 10px 0px 10px 5px;
+            display: flex;
+            align-items: center;
+            flex-flow: row wrap;
 
+            margin: 10px 0px 10px 5px;
             label {
-                width: 100px;
-                text-transform: capitalize;
+                 flex-basis: 20%;
+                text-transform: uppercase;
                 font-weight: bold;
             }
 
             input {
-                margin-left: 10px;
+                overflow: scroll;
+                flex-basis: 70%;
+                width: 0;
+                padding: 10px;
+                font-size: 1.2em;
+                font-family: "Source-Code-Pro";
+
+                &:focus {
+                    border: 2px solid $base-color;
+                    outline: none;
+                    box-shadow: 2px 4px 14px 0px rgba(0, 0, 0, 0.75);
+                    border-radius: 5px;
+                }
+            }
+
+            span {
+                color: indianred;
+                align-self: flex-end;
+                justify-self: center;
+                text-align: center;
+                flex-grow: 3;
+                min-width: 100%;
+                margin-top: 5px;
             }
         }
     }
@@ -37,7 +59,7 @@
             background-color: $base-color;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 2px 4px 14px 0px rgba(0,0,0,0.75);
+            box-shadow: 2px 4px 14px 0px rgba(0, 0, 0, 0.75);
         }
     }
 }

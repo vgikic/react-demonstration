@@ -23,6 +23,12 @@ const loading = () => {
     }
 }
 
+export const logout = () => {
+    return {
+        type: "LOG-OUT"
+    }
+}
+
 
 export const loginAsync = (email: string, password: string) => {
     return (dispatch: (action: (IAccountAction | { type: string })) => void, getState: () => IAccountState) => {

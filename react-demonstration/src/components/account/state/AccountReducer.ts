@@ -1,7 +1,10 @@
+import { debug } from "console";
+import { stat } from "fs";
 import IAccountAction from "../actions/IAccountAction";
 import IAccountPayload from "./IAccountPayload";
 import IAccountState from "./IAccountState";
 import LoginHandler from "./LoginHandler";
+import { Logout } from "./LogOutHandler";
 
 const initialState: IAccountState = {
     logIn: () => { },
@@ -15,7 +18,7 @@ const initialState: IAccountState = {
 }
 
 const AccountReducer = (state: IAccountState = initialState, action: IAccountAction): IAccountState => {
-    
+
     switch (action.type) {
 
         case "LOG-IN": {
@@ -23,9 +26,7 @@ const AccountReducer = (state: IAccountState = initialState, action: IAccountAct
         }
 
         case "LOG-OUT": {
-            return {
-                ...state
-            }
+            return Logout(state);
         }
 
         default:

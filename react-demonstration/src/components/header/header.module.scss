@@ -1,5 +1,4 @@
-@import '../../styles/colors.scss';
-
+@import "../../styles/colors.scss";
 
 .container {
     display: flex;
@@ -8,16 +7,16 @@
     justify-content: flex-end;
     align-items: stretch;
     background-color: #333;
-    
+
     @media (max-width: 500px) {
         justify-content: center;
         margin-top: 0px;
     }
 
     nav {
-        height: 100px;
+        height: 80px;
         transition: height 150ms ease-in;
-
+        margin-bottom: 10px;
         @media (max-width: 500px) {
             &.navigation-extend {
                 height: 300px;
@@ -55,7 +54,7 @@
                 cursor: pointer;
                 flex-wrap: nowrap;
                 align-items: center;
-                justify-content: flex-end;
+                justify-content: center;
 
                 a {
                     text-decoration: none;
@@ -74,6 +73,10 @@
                     }
                 }
 
+                &.logout--icon:hover {
+                    background-color: rgb(207, 11, 158);
+                }
+
                 @media (max-width: 500px) {
                     i {
                         position: absolute;
@@ -82,8 +85,13 @@
                         top: 10px;
                     }
                     flex-direction: column-reverse;
-                }
 
+                    &.logout--icon {
+                        i {
+                            position: static;
+                        }
+                    }
+                }
             }
         }
     }
