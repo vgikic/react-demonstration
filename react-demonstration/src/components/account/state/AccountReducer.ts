@@ -18,7 +18,7 @@ const initialState: IAccountState = {
 }
 
 const AccountReducer = (state: IAccountState = initialState, action: IAccountAction): IAccountState => {
-
+   
     switch (action.type) {
 
         case "LOG-IN": {

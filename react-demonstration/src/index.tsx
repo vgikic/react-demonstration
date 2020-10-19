@@ -8,11 +8,13 @@ import './index.scss';
 import Root from './root/Root';
 import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
+import LoaderReducer from './components/spinner/state/LoaderReducer';
 
 
 const rootReducer =
   combineReducers({
-    account: AccountReducer
+    account: AccountReducer,
+    loader: LoaderReducer
   } as IReducer);
 
 
@@ -22,9 +24,9 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>
+    <React.StrictMode>
+      <Root />
+    </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );
