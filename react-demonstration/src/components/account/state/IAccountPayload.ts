@@ -1,6 +1,6 @@
 export default interface IAccountPayload {
     isAuthenticated: boolean,
     token: string,
-    expiresIn: string,
+    expiresIn: number,
     refreshToken: string
 }

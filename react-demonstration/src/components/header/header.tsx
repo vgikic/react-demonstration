@@ -64,8 +64,8 @@ const Header = (props: IAccountState) => {
 
                     {
                         props.payload.isAuthenticated ?
-                            <li className={style['logout--icon']}>
-                                <i className={materialIconStyle} onClick={props.logOut}>power_settings_new</i>
+                            <li onClick={props.logOut} className={style['logout--icon']}>
+                                <i className={materialIconStyle}>power_settings_new</i>
                             </li> : null
                     }
 

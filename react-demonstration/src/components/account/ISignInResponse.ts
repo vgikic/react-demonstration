@@ -2,6 +2,6 @@ export default interface ISignInResponse {
     idToken: string,
     email: string,
     refreshToken: string,
-    expiresIn: string,
+    expiresIn: number,
     localId: string
 }

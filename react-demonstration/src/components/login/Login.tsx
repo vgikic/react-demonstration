@@ -75,7 +75,7 @@ const Login = (props: IAccountState & RouteComponentProps) => {
             <button
                 disabled={!isEmailValid}
                 onClick={() => props.logIn(email, password)}>
-                    SUBMIT
+                    LOG-IN
             </button>
 
         </div>

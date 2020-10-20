@@ -1,13 +1,14 @@
 import './Root.scss';
-import React, { Suspense } from 'react';
+import { connect } from 'react-redux';
+import React, { Suspense, useEffect } from 'react';
+import IState from '../common/interface/IState';
 import Header from '../components/header/Header';
+import Spinner from '../components/spinner/Spinner';
 import Account from '../components/account/Account';
 import { AccountRoute, Login, LoginRoute } from '../routes';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
-import IState from '../common/interface/IState';
 import IAccountPayload from '../components/account/state/IAccountPayload';
-import Spinner from '../components/spinner/Spinner';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { tryLoadCredentials } from '../components/account/actions/AccountActionCreator';
 
 
 const mapStateToProps = ({ account }: IState) => {
@@ -15,7 +16,19 @@ const mapStateToProps = ({ account }: IState) => {
   return { ...payload };
 }
 
-function Root(props: IAccountPayload) {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    tryLoadCredentials: () => dispatch(tryLoadCredentials())
+  }
+}
+
+
+function Root(props: IAccountPayload & { tryLoadCredentials: () => void }) {
+
+  useEffect(() => {
+    props.tryLoadCredentials();
+  }, []);
+
   return (
     <div className="main-container">
       <BrowserRouter>
@@ -43,4 +56,4 @@ const getAccountRoute = (accountPayload: IAccountPayload) => {
   return route;
 }
 
-export default connect(mapStateToProps)(Root);
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

@@ -1,3 +1,4 @@
+import { TryLoadCredentials } from './TryLoadCredentialsHandler';
 import { debug } from "console";
 import { stat } from "fs";
 import IAccountAction from "../actions/IAccountAction";
@@ -12,13 +13,13 @@ const initialState: IAccountState = {
     payload: {
         isAuthenticated: false,
         token: '',
-        expiresIn: '',
+        expiresIn: undefined,
         refreshToken: ''
     } as IAccountPayload
 }
 
 const AccountReducer = (state: IAccountState = initialState, action: IAccountAction): IAccountState => {
-   
+
     switch (action.type) {
 
         case "LOG-IN": {
@@ -27,6 +28,10 @@ const AccountReducer = (state: IAccountState = initialState, action: IAccountAct
 
         case "LOG-OUT": {
             return Logout(state);
+        }
+
+        case "TRY-LOAD-CREDENTIALS": {
+            return TryLoadCredentials(state);
         }
 
         default:

@@ -24,8 +24,9 @@ const Account = (props: IAccountPayload) => {
         document.execCommand("copy");
     }
 
-    return (
+    const expirationDateTime = new Date(props.expiresIn).toString();
 
+    return (
         <div className={style.container}>
 
             <div onClick={copyToClipboard.bind(tokenElement)}>
@@ -40,8 +41,8 @@ const Account = (props: IAccountPayload) => {
             </div>
 
             <div>
-                <label htmlFor="expiresIn">Expires in </label>
-                <span id="expiresIn">{props.expiresIn}</span>
+                <label htmlFor="expiresIn">Expires: </label>
+                <span id="expiresIn">{expirationDateTime}</span>
             </div>
 
         </div>)

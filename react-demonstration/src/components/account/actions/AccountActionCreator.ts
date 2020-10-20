@@ -7,7 +7,7 @@ import ISignInResponse from '../ISignInResponse';
 import IAccountState from '../state/IAccountState';
 import { loadingStart } from '../../spinner/actions/LoaderActionCreator';
 
-const login = (token: string, exipresIn: string, refreshToken: string): IAccountAction => {
+const login = (token: string, exipresIn: number, refreshToken: string): IAccountAction => {
     return {
         type: "LOG-IN",
         payload: {
@@ -19,9 +19,17 @@ const login = (token: string, exipresIn: string, refreshToken: string): IAccount
     }
 }
 
-export const logout = () => {
+export const logout = (): IAccountAction => {
     return {
-        type: "LOG-OUT"
+        type: "LOG-OUT",
+        payload: undefined
+    }
+}
+
+export const tryLoadCredentials = (): IAccountAction => {
+    return {
+        type: "TRY-LOAD-CREDENTIALS",
+        payload: undefined
     }
 }
 
