@@ -1,10 +1,10 @@
 import ILoaderState from "./ILoaderState";
 
-const initialState = {
+const initialState: ILoaderState = {
     loading: false
 }
 
-const LoaderReducer = (state: ILoaderState = initialState, action) => {
+const LoaderReducer = (state: ILoaderState = initialState, action: { type: "LOADING-START" | "LOADING-END" }): ILoaderState => {
 
     switch (action.type) {
 
@@ -19,7 +19,7 @@ const LoaderReducer = (state: ILoaderState = initialState, action) => {
                 loading: false
             }
         }
-
+        
         default: {
             return {
                 ...state

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 import IState from '../../common/interface/IState';
-import { AccountRoute } from '../../routes';
+import { AccountRoute, LoginRoute } from '../../routes';
 import { loginAsync } from '../account/actions/AccountActionCreator';
 import IAccountState from '../account/state/IAccountState';
 import style from './Login.module.scss';
@@ -22,12 +22,13 @@ const mapDispatchToProps = (dispatch) => {
 const Login = (props: IAccountState & RouteComponentProps) => {
 
     let history = useHistory();
+
     useEffect(() => {  
-        if (props.payload.isAuthenticated) {
+        if (props.payload.isAuthenticated
+             && props.history.location.pathname === LoginRoute) {
             history.push(AccountRoute);
         }
     },[props.payload.isAuthenticated]);
-
 
     const [email, changeEmailState] = useState('demouser@demo.com');
     const [password, changePasswordState] = useState('Password123!');

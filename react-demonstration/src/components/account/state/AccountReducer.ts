@@ -1,6 +1,4 @@
 import { TryLoadCredentials } from './TryLoadCredentialsHandler';
-import { debug } from "console";
-import { stat } from "fs";
 import IAccountAction from "../actions/IAccountAction";
 import IAccountPayload from "./IAccountPayload";
 import IAccountState from "./IAccountState";

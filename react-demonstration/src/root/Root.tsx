@@ -41,6 +41,8 @@ function Root(props: IAccountPayload & { tryLoadCredentials: () => void }) {
 
             {getItemsRoute(props)}
 
+            <Redirect from={`/`} to={`${AccountRoute}`} />
+
             <Route render={() => <h1>404 - NOT FOUND</h1>} />
 
           </Switch>
