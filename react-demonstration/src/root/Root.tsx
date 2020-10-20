@@ -5,11 +5,10 @@ import IState from '../common/interface/IState';
 import Header from '../components/header/Header';
 import Spinner from '../components/spinner/Spinner';
 import Account from '../components/account/Account';
-import { AccountRoute, Login, LoginRoute } from '../routes';
+import { AccountRoute, Items, ItemsRoute, Login, LoginRoute } from '../routes';
 import IAccountPayload from '../components/account/state/IAccountPayload';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { tryLoadCredentials } from '../components/account/actions/AccountActionCreator';
-
 
 const mapStateToProps = ({ account }: IState) => {
   const { payload } = account;
@@ -21,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
     tryLoadCredentials: () => dispatch(tryLoadCredentials())
   }
 }
-
 
 function Root(props: IAccountPayload & { tryLoadCredentials: () => void }) {
 
@@ -41,6 +39,8 @@ function Root(props: IAccountPayload & { tryLoadCredentials: () => void }) {
 
             {getAccountRoute(props)}
 
+            {getItemsRoute(props)}
+
             <Route render={() => <h1>404 - NOT FOUND</h1>} />
 
           </Switch>
@@ -53,6 +53,12 @@ function Root(props: IAccountPayload & { tryLoadCredentials: () => void }) {
 const getAccountRoute = (accountPayload: IAccountPayload) => {
   const route = accountPayload.isAuthenticated ?
     <Route path={`${AccountRoute}`} exact component={Account} /> : <Redirect from={`${AccountRoute}`} to={`${LoginRoute}`} />;
+  return route;
+}
+
+const getItemsRoute = (accountPayload: IAccountPayload) => {
+  const route = accountPayload.isAuthenticated ?
+    <Route path={`${ItemsRoute}`} exact component={Items} /> : <Redirect from={`${ItemsRoute}`} to={`${LoginRoute}`} />;
   return route;
 }
 

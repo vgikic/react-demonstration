@@ -19,8 +19,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-
-
 const Login = (props: IAccountState & RouteComponentProps) => {
 
     let history = useHistory();

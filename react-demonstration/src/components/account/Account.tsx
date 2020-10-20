@@ -10,8 +10,6 @@ const mapStateToProps = (state: { account: IAccountState }) => {
     } as IAccountPayload
 }
 
-
-
 const Account = (props: IAccountPayload) => {
 
     const tokenElement = useRef(null);

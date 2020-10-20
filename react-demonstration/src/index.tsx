@@ -1,20 +1,21 @@
+import './index.scss';
 import React from 'react';
+import Root from './root/Root';
+import thunk from 'redux-thunk';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import IReducer from './common/interface/IReducer';
-import AccountReducer from './components/account/state/AccountReducer';
-import './index.scss';
-import Root from './root/Root';
 import * as serviceWorker from './serviceWorker';
-import thunk from 'redux-thunk';
+import IReducer from './common/interface/IReducer';
+import ItemsReducer from './components/items/state/ItemsReducer';
 import LoaderReducer from './components/spinner/state/LoaderReducer';
-
+import AccountReducer from './components/account/state/AccountReducer';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 
 const rootReducer =
   combineReducers({
     account: AccountReducer,
-    loader: LoaderReducer
+    loader: LoaderReducer,
+    items: ItemsReducer
   } as IReducer);
 
 
