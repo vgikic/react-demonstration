@@ -1,4 +1,5 @@
 export default interface IITem {
     id: number,
-    title: string
+    title: string,
+    thumbnailUrl: string
 }

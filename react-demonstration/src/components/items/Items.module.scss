@@ -1,3 +1,9 @@
 .container {
-    color: red;
+    display: grid;
+    width: 75%;
+    grid-template-columns: 20% auto auto;
+    align-self: center;
+    margin-top: 2%;
+    justify-content: center;
+    grid-row-gap: 10px;
 }

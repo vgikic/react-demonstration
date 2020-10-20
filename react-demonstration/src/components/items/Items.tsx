@@ -6,7 +6,7 @@ import style from './Items.module.scss';
 import IItemsState from './state/IItemsState';
 
 const mapStateToProps = ({ items: itemState }: IState) => {
-    return  itemState
+    return itemState;
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -16,20 +16,26 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Items = (props: IItemsState & { fetchItems: () => void }) => {
-debugger;
+
     useEffect(() => {
         props.fetchItems();
     }, []);
 
     const tableRowsData = props.payload.items.map(item => (
-        <tr key={item.id}>
-            <td>{item.id}</td>
-            <td>{item.title}</td>
-        </tr>
+        
+        <React.Fragment key={item.id}>
+            <span>{item.id}</span>
+            <span>{item.title}</span>
+            <img src={item.thumbnailUrl}></img>
+        </React.Fragment>
     ));
 
     return (
         <div className={style.container}>
+
+            <span><b>ID</b></span>
+            <span><b>TITLE</b></span>
+            <span><b>IMG</b></span>
 
             {tableRowsData}
 
